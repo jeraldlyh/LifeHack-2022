@@ -9,6 +9,4 @@ export const MAIN_THEME = {
         shadowRadius: 3,
     },
     ACCENTS: ["#2D99B9", "#7C82A0", "#009633"],
-    LIGHT_GREEN: "#E3EED8",
-    GREEN: "#56884E",
 };
