@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView, StyleSheet, View, Text, Image } from "react-native";
 import IconEntypo from "react-native-vector-icons/Entypo";
 import { MAIN_THEME } from "../../common/constants";
-import { Card } from "./components/Card";
+import { Card } from "./components";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 export const ProfilePage = () => {
@@ -41,7 +41,7 @@ export const ProfilePage = () => {
             </View>
 
             <View>
-                <Card text="Redeem rewards" icon="gift" onPress={() => console.log("")} />
+                <Card text="Redeem rewards" icon="gift" />
                 <Card
                     text="Settings"
                     icon="cog"
