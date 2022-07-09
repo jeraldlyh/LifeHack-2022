@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext } from "react";
 import { Modal } from "../common/components";
 
 type TModalProviderProps = {
@@ -31,7 +31,7 @@ const initialContext: Context = {
 
 const ModalContext = createContext<Context>(initialContext);
 
-export const ModalProvider: React.FC<TModalProviderProps> = ({ children }) => {
+export const ModalProvider = ({ children }: TModalProviderProps) => {
     const [header, setHeader] = useState<string | React.ReactNode>(null);
     const [body, setBody] = useState<string | React.ReactNode>(null);
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -76,7 +76,8 @@ export const ModalProvider: React.FC<TModalProviderProps> = ({ children }) => {
                 closeModal,
             }}
         >
-            {isOpen ? <Modal body={body} /> : { children }}
+            {isOpen && <Modal body={body} />}
+            {children}
         </ModalContext.Provider>
     );
 };

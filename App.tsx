@@ -1,22 +1,45 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID, MEASUREMENT_ID } from "@env";
+import { useState, useEffect } from "react";
+import { Text, View } from "react-native";
+import * as Font from "expo-font";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { ModalProvider, AuthProvider } from "./providers";
+import { RootStack } from "./screens";
 
 export default function App() {
-    console.log(API_KEY);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        loadFonts();
+    }, []);
+
+    const loadFonts = async () => {
+        await Font.loadAsync({
+            "DMSans-Regular": require("./assets/fonts/DMSans-Regular.ttf"),
+            "DMSans-Italic": require("./assets/fonts/DMSans-Italic.ttf"),
+            "DMSans-Bold": require("./assets/fonts/DMSans-Bold.ttf"),
+            "DMSans-BoldItalic": require("./assets/fonts/DMSans-BoldItalic.ttf"),
+            "DMSans-Medium": require("./assets/fonts/DMSans-Medium.ttf"),
+            "DMSans-MediumItalic": require("./assets/fonts/DMSans-MediumItalic.ttf"),
+        });
+        setIsLoaded(true);
+    };
+
     return (
-        <View style={styles.container}>
-            <Text>Open up App.tsx to start working on your app!</Text>
-            <StatusBar style="auto" />
-        </View>
+        <SafeAreaProvider>
+            {isLoaded ? (
+                <AuthProvider>
+                    <ModalProvider>
+                        <NavigationContainer>
+                            <RootStack />
+                        </NavigationContainer>
+                    </ModalProvider>
+                </AuthProvider>
+            ) : (
+                <View>
+                    <Text>Loading...</Text>
+                </View>
+            )}
+        </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-});
