@@ -24,7 +24,7 @@ export const WelcomeScreen = ({ navigation }: TScreenProp) => {
                     </React.Fragment>
                 ))}
             </Swiper>
-            <Button text="Get Started" buttonStyle={styles.buttonContainer} />
+            <Button text="Get Started" buttonStyle={styles.buttonContainer} handleOnPress = {()=>navigation.push("Login")} />
         </Container>
     );
 };
