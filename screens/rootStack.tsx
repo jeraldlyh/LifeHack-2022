@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useAuth } from "../providers/auth";
-import { AuthStack } from "./auth";
 import TabStack from "./tabStack";
+import { AuthStack } from "./auth";
 
 const Root = createStackNavigator();
 

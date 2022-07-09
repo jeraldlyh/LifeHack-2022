@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import { MAIN_THEME } from "../constants"
 import { StyleProp, ViewStyle, View, Text, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -20,9 +21,9 @@ export const Button = ({ buttonStyle, text, textStyle, handleOnPress }: TSButton
 const styles = StyleSheet.create({
     buttonContainer: {
         width: "100%",
-        backgroundColor: "#56884E",
+        backgroundColor: MAIN_THEME.COLOR.GREEN,
         borderRadius: 8,
-        padding: 15,
+        padding: 20,
         justifyContent: "center",
         alignItems: "center",
     },
