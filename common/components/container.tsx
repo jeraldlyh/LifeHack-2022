@@ -11,7 +11,7 @@ export const Container = ({ children, scrollable,style }: TContainerProps) => {
         return <ScrollView style={[styles.container,style]}>{children}</ScrollView>;
     }
 
-    return <View style={[styles.container,style]}>{children}</View>;
+    return <View style={[style,styles.container]}>{children}</View>;
 };
 
 const styles = StyleSheet.create({
