@@ -18,5 +18,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
+        paddingHorizontal:20,
+        paddingVertical:30
     },
 });

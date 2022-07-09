@@ -6,6 +6,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { ModalProvider, AuthProvider } from "./providers";
 import { RootStack } from "./screens";
 import { MarketplaceHome } from "./screens/marketplace/marketHome";
+import { AboutItem } from "./screens/marketplace/aboutItem";
+import { MarketplaceStack } from "./screens/marketplace";
 
 export default function App() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -29,7 +31,13 @@ export default function App() {
     return (
         <SafeAreaProvider>
             {isLoaded ? (
-                <MarketplaceHome/>
+                <AuthProvider>
+                    <ModalProvider>
+                        <NavigationContainer>
+                            <RootStack />
+                        </NavigationContainer>
+                    </ModalProvider>
+                </AuthProvider>
             ) : (
                 <View>
                     <Text>Loading...</Text>
