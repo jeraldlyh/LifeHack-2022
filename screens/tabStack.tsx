@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getHeaderTitle } from "@react-navigation/elements";
 import Icon from "react-native-vector-icons/Ionicons";
+import { WelcomeScreen } from "./auth/welcomeScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -44,7 +45,9 @@ const TabStack = () => {
                 // },
                 headerShown: false,
             })}
-        ></Tab.Navigator>
+        >
+            <Tab.Screen name="welcome" component={WelcomeScreen} />
+        </Tab.Navigator>
     );
 };
 
