@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getHeaderTitle } from "@react-navigation/elements";
 import Icon from "react-native-vector-icons/Ionicons";
 import { WelcomeScreen } from "./auth/welcomeScreen";
+import RecycleStack from "./recycle/recycleStack";
 import { MapStack } from "./map";
 
 const Tab = createBottomTabNavigator();
@@ -25,11 +26,13 @@ const TabStack = () => {
                         iconName = focused ? "notifications" : "notifications-outline";
                     } else if (route.name === "Hazard") {
                         iconName = focused ? "skull" : "skull-outline";
-                    } else {
+                    } else if (route.name === "Recycle") {
+                        iconName = focused ? "sync-circle" : "sync-circle-outline";
+                    }else {
                         iconName = focused ? "person" : "person-outline";
                     }
 
-                    return <Icon name={iconName} />;
+                    return <Icon name={iconName} size={25} />;
                 },
                 tabBarLabelStyle: {
                     fontFamily: "DMSans-Bold",
@@ -48,6 +51,7 @@ const TabStack = () => {
             })}
         >
             <Tab.Screen name="Home" component={WelcomeScreen} />
+            <Tab.Screen name="Recycle" component={RecycleStack} />
             <Tab.Screen name="Maps" component={MapStack} />
         </Tab.Navigator>
     );
