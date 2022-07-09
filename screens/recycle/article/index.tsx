@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import React from "react";
-import { ImageBackground, View, Text, StyleSheet, Image, ImageSourcePropType, ScrollView } from "react-native";
+import { ImageBackground, View, Text, StyleSheet, Image, ImageSourcePropType, ScrollView, TouchableOpacity } from "react-native";
 import { Rating } from "react-native-ratings";
 import Icon from "react-native-vector-icons/EvilIcons";
 import { OverlayCard } from "../../../common/components";
@@ -22,8 +22,12 @@ const Article = (navigationRoute: TNavigationProps) => {
     faker.locale = "en_US";
     const name = faker.name.firstName() + ' ' + faker.name.lastName();
     return (
-        <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 100}} >
+        <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 100 }} >
             <ImageBackground source={navigationRoute.route.params.image} style={styles.backgroundImage} />
+            <TouchableOpacity style={styles.cardButton}>
+                <Icon size={20} name="pencil" color="green"/>
+                <Text style={styles.cardButtonText}>Take quiz</Text>
+            </TouchableOpacity>
             <View style={styles.overlayContainer}>
                 <OverlayCard height={900}>
                     <View>
@@ -172,5 +176,18 @@ const styles = StyleSheet.create({
     reviews: {
         color: "#C4C4C4",
         fontSize: 10,
+    },
+    cardButton: {
+        flexDirection: "row",
+        marginTop: 10,
+        marginRight: 10,
+        alignSelf: "flex-end",
+        width: 95,
+        padding: 8,
+        backgroundColor: "#F0F0F0",
+        borderRadius: 7,
+    },
+    cardButtonText: {
+        color: "#91B48C",
     },
 });
