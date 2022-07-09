@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
         paddingBottom: 100,
     },
     title: {
-        fontFamily: "DMSans-Regular",
-        fontSize: 22,
+        fontFamily: "DMSans-Bold",
+        fontSize: 25,
     },
     headerContainer: {
         marginTop: 15,
@@ -92,12 +92,13 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     headerText: {
-        fontFamily: "DMSans-Regular",
+        fontFamily: "DMSans-Bold",
         fontSize: 20,
+        marginTop: 18
     },
     seeAll: {
         fontFamily: "DMSans-Regular",
-        fontSize: 12,
+        fontSize: 14,
         color: "#9D9D9D",
     },
     productsContainer: {
