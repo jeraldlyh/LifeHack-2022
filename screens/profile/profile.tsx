@@ -4,8 +4,9 @@ import IconEntypo from "react-native-vector-icons/Entypo";
 import { MAIN_THEME } from "../../common/constants";
 import { Card } from "./components";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { TScreenProp } from "../../common/types";
 
-export const ProfilePage = () => {
+export const ProfilePage = ({ navigation }: TScreenProp) => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.summaryContainer}>
@@ -42,11 +43,7 @@ export const ProfilePage = () => {
 
             <View>
                 <Card text="Redeem rewards" icon="gift" />
-                <Card
-                    text="Settings"
-                    icon="cog"
-                    // onPress={() => navigation.push("Settings")}
-                />
+                <Card text="Settings" icon="cog" handleOnPress={() => navigation.push("Settings")} />
             </View>
         </ScrollView>
     );
