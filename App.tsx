@@ -5,6 +5,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { ModalProvider, AuthProvider } from "./providers";
 import { RootStack } from "./screens";
+import { MarketplaceHome } from "./screens/marketplace/marketHome";
 
 export default function App() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -28,13 +29,7 @@ export default function App() {
     return (
         <SafeAreaProvider>
             {isLoaded ? (
-                <AuthProvider>
-                    <ModalProvider>
-                        <NavigationContainer>
-                            <RootStack />
-                        </NavigationContainer>
-                    </ModalProvider>
-                </AuthProvider>
+                <MarketplaceHome/>
             ) : (
                 <View>
                     <Text>Loading...</Text>
