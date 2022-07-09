@@ -103,7 +103,7 @@ export const QuizPage = ({ navigation }: any) => {
                             <Text style={styles.quizResultHeader}>Awww man!</Text>
                             <Text style={styles.quizResultText}>Try again another day!</Text>
                             <TouchableOpacity
-                                onPress={() => checkAnswer()}
+                                onPress={() => navigation.goBack()}
                                 style={{
                                     marginTop: 30,
                                     width: "80%",

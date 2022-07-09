@@ -12,7 +12,7 @@ const RecycleStack = () => {
     return (
         <Recycle.Navigator
             screenOptions={{
-                headerShown: true,
+                headerShown: false,
             }}
         >
             <Recycle.Screen name="CourseHome" component={RecycleHome} options={{ title: "Recycling" }} />

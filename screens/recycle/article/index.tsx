@@ -34,10 +34,16 @@ const Article = (navigationRoute: TNavigationProps) => {
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 100 }}>
             <ImageBackground source={navigationRoute.route.params.image} style={styles.backgroundImage} />
-            <TouchableOpacity style={styles.cardButton} onPress={() => navigationRoute.navigation.push("Quiz")}>
-                <Icon size={20} name="pencil" color="green" />
-                <Text style={styles.cardButtonText}>Take quiz</Text>
-            </TouchableOpacity>
+            <View style={styles.topRow}>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigationRoute.navigation.goBack()}>
+                    <Icon size={40} name="chevron-left" color="black" />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.cardButton} onPress={() => navigationRoute.navigation.push("Quiz")}>
+                    <Icon size={20} name="pencil" color="green" />
+                    <Text style={styles.cardButtonText}>Take quiz</Text>
+                </TouchableOpacity>
+            </View>
+
             <View style={styles.overlayContainer}>
                 <OverlayCard height={900}>
                     <View>
@@ -181,13 +187,27 @@ const styles = StyleSheet.create({
     },
     cardButton: {
         flexDirection: "row",
-        marginTop: 10,
-        marginRight: 10,
-        alignSelf: "flex-end",
         width: 95,
+        height: 34,
         padding: 8,
         backgroundColor: "#F0F0F0",
         borderRadius: 7,
+    },
+    topRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: 10,
+        paddingHorizontal: 10
+    },
+    backButton: {
+        flexDirection: "row",
+        width: 70,
+        padding: 8,
+        // backgroundColor: "#F0F0F0",
+        borderRadius: 7,
+    },
+    backButtonText: {
+        color: "blue",
     },
     cardButtonText: {
         color: "#91B48C",
