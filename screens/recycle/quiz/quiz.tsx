@@ -70,7 +70,7 @@ export const QuizPage = ({ navigation }: any) => {
                             <Text style={styles.quizResultText}>You earned 75 points!</Text>
                         </View>
                         <TouchableOpacity
-                            onPress={() => checkAnswer()}
+                            onPress={() => navigation.goBack()}
                             style={{
                                 marginTop: 30,
                                 width: "80%",
