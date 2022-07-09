@@ -45,7 +45,7 @@ const Article = (navigationRoute: TNavigationProps) => {
             </View>
 
             <View style={styles.overlayContainer}>
-                <OverlayCard height={900}>
+                <OverlayCard height={800}>
                     <View>
                         <View style={styles.headerContainer}>
                             <Text style={styles.titleText}>{navigationRoute.route.params.title}</Text>
@@ -65,7 +65,7 @@ const Article = (navigationRoute: TNavigationProps) => {
                         <Text style={styles.subheaderTitle}>4. {faker.lorem.lines(1)} </Text>
                         <Text style={styles.text}>{faker.lorem.paragraph()}</Text>
 
-                        <Text style={styles.subheaderTitle}>About the author</Text>
+                        {/* <Text style={styles.subheaderTitle}>About the author</Text>
                         <View style={styles.profile}>
                             <Image
                                 style={styles.profilePic}
@@ -86,7 +86,7 @@ const Article = (navigationRoute: TNavigationProps) => {
                                     <Text style={styles.reviews}>100 reviews</Text>
                                 </View>
                             </View>
-                        </View>
+                        </View> */}
                     </View>
                 </OverlayCard>
             </View>
@@ -171,6 +171,8 @@ const styles = StyleSheet.create({
     profilePic: {
         marginTop: 10,
         marginRight: 10,
+        height: 50,
+        resizeMode: 'contain'
     },
     innerProfileContainer: {
         flexDirection: "row",
