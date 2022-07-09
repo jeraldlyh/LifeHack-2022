@@ -11,7 +11,7 @@ export const RootStack = () => {
 
     return (
         <Root.Navigator screenOptions={{ headerShown: false }}>
-            {isLoggedIn ? (
+            {true ? (
                 <Root.Screen name="Tab" component={TabStack} />
             ) : (
                 <Root.Screen name="Auth" component={AuthStack} />

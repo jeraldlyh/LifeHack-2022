@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getHeaderTitle } from "@react-navigation/elements";
 import Icon from "react-native-vector-icons/Ionicons";
 import { WelcomeScreen } from "./auth/welcomeScreen";
+import RecycleStack from "./recycle/recycleStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,14 +25,16 @@ const TabStack = () => {
                         iconName = focused ? "notifications" : "notifications-outline";
                     } else if (route.name === "Hazard") {
                         iconName = focused ? "skull" : "skull-outline";
-                    } else {
+                    } else if (route.name === "Recycle") {
+                        iconName = focused ? "sync-circle" : "sync-circle-outline";
+                    }else {
                         iconName = focused ? "person" : "person-outline";
                     }
 
-                    return <Icon name={iconName} />;
+                    return <Icon name={iconName} size={25} />;
                 },
                 tabBarLabelStyle: {
-                    fontFamily: "Poppins-Bold",
+                    fontFamily: "DMSans-Bold",
                 },
                 tabBarActiveTintColor: "#2B2B2B",
                 tabBarInactiveTintColor: "gray",
@@ -47,6 +50,7 @@ const TabStack = () => {
             })}
         >
             <Tab.Screen name="welcome" component={WelcomeScreen} />
+            <Tab.Screen name="Recycle" component={RecycleStack} />
         </Tab.Navigator>
     );
 };
