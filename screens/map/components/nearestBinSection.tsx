@@ -18,15 +18,30 @@ export const NearestBinSection = ({ setSection, currentLocation }: TSectionProps
         const result = await MapService.loadNearestBins("test", { currentLocation });
         const output = result.bins.sort((a, b) => a.distance - b.distance).slice(0, 3);
 
-        const bins = output.map((o, index) => (
-            <NearestBinCard key={index} address={o.address} location={o.location} distance={o.distance} />
-        ));
+        const bins = output.map((o, index) => {
+            const handleOnPress = () => {
+                setSection({
+                    key: 2,
+                    metadata: { address: o.address, location: o.location, distance: o.distance, notes: o.notes },
+                });
+            };
+
+            return (
+                <NearestBinCard
+                    key={index}
+                    address={o.address}
+                    location={o.location}
+                    distance={o.distance}
+                    handleOnPress={handleOnPress}
+                />
+            );
+        });
 
         setNearestBins(bins);
     };
 
     return (
-        <OverlayCard height={386}>
+        <OverlayCard height={385}>
             <View style={styles.container}>
                 <Text style={styles.overlayTitle}>Nearest recycling location</Text>
 

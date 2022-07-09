@@ -33,7 +33,7 @@ export const MainSection = ({ currentLocation, setSection }: TSectionProps) => {
 
     const handleSaveAddress = () => {
         // save DB
-        setSection(1);
+        setSection({ key: 1 });
     };
 
     return (
