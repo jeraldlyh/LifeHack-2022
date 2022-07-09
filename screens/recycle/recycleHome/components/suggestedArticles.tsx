@@ -18,6 +18,9 @@ const CourseCardBody = ({ description }: TCourseCardBodyProps) => {
             <Text style={styles.cardDescription}>
                 {description}
             </Text>
+            <TouchableOpacity style={styles.cardButton}>
+                <Text style={styles.cardButtonText}>Take quiz</Text>
+            </TouchableOpacity>
         </Fragment>
     );
 };
