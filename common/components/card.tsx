@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
-// import { MAIN_THEME } from "../constants";
 
 type TCardProps = {
     title: string;
@@ -22,7 +21,7 @@ const Card = ({ title, body, imageSrc }: TCardProps) => {
                     height: "100%",
                     borderRadius: 16,
                     flex: 1,
-                    resizeMode: 'contain'
+                    resizeMode: 'cover'
                 }}
             />
         </View>
