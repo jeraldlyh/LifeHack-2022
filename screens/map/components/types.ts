@@ -11,6 +11,7 @@ export type TSection = {
 
 export type TSectionProps = {
     currentLocation: TCurrentLocation;
+    section: TSection;
     setSection: (value: TSection) => void;
 };
 

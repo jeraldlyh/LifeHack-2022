@@ -37,11 +37,19 @@ export const MapScreen = () => {
         if (currentLocation) {
             switch (section?.key) {
                 case 0:
-                    return <MainSection currentLocation={currentLocation} setSection={setSection} />;
+                    return <MainSection currentLocation={currentLocation} section={section} setSection={setSection} />;
                 case 1:
-                    return <NearestBinSection currentLocation={currentLocation} setSection={setSection} />;
+                    return (
+                        <NearestBinSection
+                            currentLocation={currentLocation}
+                            section={section}
+                            setSection={setSection}
+                        />
+                    );
                 case 2:
-                    return <BinInfoSection section={section} />;
+                    return (
+                        <BinInfoSection currentLocation={currentLocation} section={section} setSection={setSection} />
+                    );
             }
         }
     };

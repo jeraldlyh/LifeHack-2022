@@ -1,23 +1,23 @@
-import { View, Image, Text, StyleSheet } from "react-native";
-import { OverlayCard } from "../../../common/components";
+import { View, ScrollView, Image, Text, StyleSheet } from "react-native";
+import { OverlayCard, BackButton } from "../../../common/components";
 import { MAIN_THEME } from "../../../common/constants";
-import { TSection, TSectionProps } from "./types";
+import { TSectionProps } from "./types";
 
-type TBinInfoSectionProps = Partial<TSectionProps> & {
-    section: TSection;
-};
-
-export const BinInfoSection = ({ section, setSection }: TBinInfoSectionProps) => {
+export const BinInfoSection = ({ section, setSection }: TSectionProps) => {
     return (
         <OverlayCard height={385}>
             <View style={styles.container}>
-                <Text style={styles.overlayTitle}>Nearest recycling location</Text>
-                <Text style={styles.locationText}>{section.metadata.location}</Text>
-                <Text style={styles.addressText}>{section.metadata.address}</Text>
+                <BackButton handleOnPress={() => setSection({ key: section.key - 1 })} />
 
-                <Image source={require("../../../assets/maps/recycle_bin.png")} style={styles.imageContainer} />
-                <Text style={styles.locationText}>Details</Text>
-                <Text style={styles.detailsText}>{section.metadata.notes || "No notes can be found"}</Text>
+                <Text style={styles.overlayTitle}>Nearest recycling location</Text>
+                <ScrollView>
+                    <Text style={styles.locationText}>{section.metadata.location}</Text>
+                    <Text style={styles.addressText}>{section.metadata.address}</Text>
+
+                    <Image source={require("../../../assets/maps/recycle_bin.png")} style={styles.imageContainer} />
+                    <Text style={styles.locationText}>Details</Text>
+                    <Text style={styles.detailsText}>{section.metadata.notes || "No notes can be found"}</Text>
+                </ScrollView>
             </View>
         </OverlayCard>
     );
@@ -26,11 +26,13 @@ export const BinInfoSection = ({ section, setSection }: TBinInfoSectionProps) =>
 const styles = StyleSheet.create({
     container: {
         display: "flex",
+        overflow: "scroll",
     },
     overlayTitle: {
         fontFamily: "DMSans-Bold",
         fontSize: 23,
         color: MAIN_THEME.COLOR.GREEN,
+        marginTop: 10,
         marginBottom: 20,
     },
     addressText: {
