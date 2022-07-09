@@ -3,15 +3,15 @@ import { ScrollView, StyleProp, StyleSheet, View, ViewStyle } from "react-native
 type TContainerProps = {
     children: React.ReactNode;
     scrollable?: boolean;
-    style?: StyleProp<ViewStyle> 
+    style?: StyleProp<ViewStyle>;
 };
 
-export const Container = ({ children, scrollable,style }: TContainerProps) => {
+export const Container = ({ children, scrollable, style }: TContainerProps) => {
     if (scrollable) {
-        return <ScrollView contentContainerStyle={[styles.scrollViewContainer,style]}>{children}</ScrollView>;
+        return <ScrollView contentContainerStyle={[styles.scrollViewContainer, style]}>{children}</ScrollView>;
     }
 
-    return <View style={[style,styles.container]}>{children}</View>;
+    return <View style={[style, styles.container]}>{children}</View>;
 };
 
 const styles = StyleSheet.create({
@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 26,
         backgroundColor: "white",
     },
-    scrollViewContainer:{
+    scrollViewContainer: {
         paddingHorizontal: 26,
         backgroundColor: "white",
-    }
+    },
 });

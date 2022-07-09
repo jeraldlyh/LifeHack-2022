@@ -18,13 +18,17 @@ export const WelcomeScreen = ({ navigation }: TScreenProp) => {
         <Container>
             <Swiper autoplay showsPagination style={styles.swiperStyle}>
                 {IMAGE_DATA.map((data, index) => (
-                    <React.Fragment key={index} >
+                    <React.Fragment key={index}>
                         <Image source={data.image} style={styles.imageContainer} />
                         <Text style={styles.swiperText}>{data.text}</Text>
                     </React.Fragment>
                 ))}
             </Swiper>
-            <Button text="Get Started" buttonStyle={styles.buttonContainer} handleOnPress = {()=>navigation.push("Login")} />
+            <Button
+                text="Get Started"
+                buttonStyle={styles.buttonContainer}
+                handleOnPress={() => navigation.push("Login")}
+            />
         </Container>
     );
 };
