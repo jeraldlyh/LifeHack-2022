@@ -1,15 +1,15 @@
 import { Text, View, TextInput, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Container } from "../common/components";
-import { Button } from "../common/components/button";
+import { Container } from "../../common/components";
+import { Button } from "../../common/components/button";
 import Icon from "react-native-vector-icons/AntDesign";
 
 export const RecyclingForm = () => {
     const [length, setLength] = useState<number>(0);
 
     return (
-        <Container>
+        <Container scrollable>
             <Text style={styles.title}>Upload Image of items recycled</Text>
             <Text style={styles.subtitle}>Image will be used for point processing</Text>
             <TouchableOpacity containerStyle={styles.uploadImage}>
