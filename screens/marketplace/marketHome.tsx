@@ -16,6 +16,7 @@ import {
 } from "../../assets/marketplace";
 import { ProductCard } from "../../common/components/marketplace/productCard";
 import { TScreenProp } from "../../common/types";
+import { Header } from "../../common/components/headers";
 
 export const MarketplaceHome = ({ navigation }: TScreenProp) => {
     const productDetails = [
@@ -36,7 +37,7 @@ export const MarketplaceHome = ({ navigation }: TScreenProp) => {
     };
     return (
         <Container style={styles.container} scrollable={true}>
-            <Text style={styles.title}>Marketplace</Text>
+            <Header title="Marketplace" isRoot = {true}/>
             <SearchBar searchContainerStyle={{ marginTop: 20 }} />
             <View style={styles.headerContainer}>
                 <Text style={styles.headerText}>Latest Products</Text>
