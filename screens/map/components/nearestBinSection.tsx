@@ -2,25 +2,18 @@ import { StyleSheet, View, Text } from "react-native";
 import { OverlayCard } from "../../../common/components";
 import { MAIN_THEME } from "../../../common/constants";
 import { NearestBinCard } from "./nearestBinCard";
-import { useEffect, useState } from "react";
-import { MapService } from "../../../services";
-import { TSectionProps } from "./types";
+import { TNearestBin, TSectionProps } from "./types";
 import { BackButton } from "../../../common/components/backButton";
 import { ScrollView } from "react-native-gesture-handler";
+import { useEffect, useState } from "react";
 
-export const NearestBinSection = ({ section, setSection, currentLocation }: TSectionProps) => {
-    const [nearestBins, setNearestBins] = useState<JSX.Element[]>([]);
+type TNearestBinSectionProps = Pick<TSectionProps, "setSection" | "section"> & {
+    nearestBins: TNearestBin[];
+};
 
-    useEffect(() => {
-        loadNearestBins();
-    }, []);
-
-    const loadNearestBins = async () => {
-        // TODO - add user id
-        const result = await MapService.loadNearestBins("test", { currentLocation });
-        const output = result.bins.sort((a, b) => a.distance - b.distance).slice(0, 3);
-
-        const bins = output.map((o, index) => {
+export const NearestBinSection = ({ section, setSection, nearestBins }: TNearestBinSectionProps) => {
+    const renderNearestBins = () => {
+        return nearestBins.map((o, index) => {
             const handleOnPress = () => {
                 setSection({
                     key: 2,
@@ -38,8 +31,6 @@ export const NearestBinSection = ({ section, setSection, currentLocation }: TSec
                 />
             );
         });
-
-        setNearestBins(bins);
     };
 
     return (
@@ -47,7 +38,7 @@ export const NearestBinSection = ({ section, setSection, currentLocation }: TSec
             <View style={styles.container}>
                 <BackButton handleOnPress={() => setSection({ key: section.key - 1 })} />
                 <Text style={styles.overlayTitle}>Nearest recycling locations</Text>
-                <ScrollView style={styles.nearestBinContainer}>{nearestBins}</ScrollView>
+                <ScrollView style={styles.nearestBinContainer}>{renderNearestBins()}</ScrollView>
             </View>
         </OverlayCard>
     );

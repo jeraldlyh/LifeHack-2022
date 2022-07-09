@@ -1,21 +1,40 @@
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import { StyleSheet, Text, View } from "react-native";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { Image, StyleSheet, Text, View } from "react-native";
 import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
 import { Container } from "../../common/components";
-import { LocationGeocodedAddress, LocationObjectCoords } from "expo-location";
 import { MainSection, NearestBinSection } from "./components";
-import { TCurrentLocation, TSection } from "./components/types";
+import { TCurrentLocation, TNearestBin, TSection } from "./components/types";
 import { AddressHelper } from "../../utils";
 import { BinInfoSection } from "./components/binInfoSection";
+import { MapService } from "../../services";
 
 export const MapScreen = () => {
     const [section, setSection] = useState<TSection>({ key: 0 });
     const [currentLocation, setCurrentLocation] = useState<TCurrentLocation>();
+    const [nearestBins, setNearestBins] = useState<TNearestBin[]>([]);
+    const [rawBins, setRawBins] = useState<TNearestBin[]>([]);
 
     useEffect(() => {
         getCurrentLocation();
     }, []);
+
+    useEffect(() => {
+        if (currentLocation) {
+            loadNearestBins();
+        }
+    }, [currentLocation]);
+
+    const loadNearestBins = async () => {
+        if (currentLocation) {
+            // TODO - add user id
+            const result = await MapService.loadNearestBins("test", { currentLocation });
+            const output = result.bins.sort((a, b) => a.distance - b.distance).slice(0, 3);
+
+            setRawBins(result.bins);
+            setNearestBins(output);
+        }
+    };
 
     const getCurrentLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
@@ -39,13 +58,7 @@ export const MapScreen = () => {
                 case 0:
                     return <MainSection currentLocation={currentLocation} section={section} setSection={setSection} />;
                 case 1:
-                    return (
-                        <NearestBinSection
-                            currentLocation={currentLocation}
-                            section={section}
-                            setSection={setSection}
-                        />
-                    );
+                    return <NearestBinSection section={section} setSection={setSection} nearestBins={nearestBins} />;
                 case 2:
                     return (
                         <BinInfoSection currentLocation={currentLocation} section={section} setSection={setSection} />
@@ -73,7 +86,19 @@ export const MapScreen = () => {
                     latitudeDelta: 0.0922,
                     longitudeDelta: 0.0421,
                 }}
-            ></MapView>
+            >
+                <Marker coordinate={{ longitude: currentLocation.longitude, latitude: currentLocation.latitude }}>
+                    <Image style={styles.pin} source={require("../../assets/maps/placeholder.png")} />
+                </Marker>
+                {rawBins.map((bin, index) => (
+                    <Marker
+                        key={index}
+                        coordinate={{ longitude: parseFloat(bin.longitude), latitude: parseFloat(bin.latitude) }}
+                    >
+                        <Image style={styles.pin} source={require("../../assets/maps/pin.png")} />
+                    </Marker>
+                ))}
+            </MapView>
             <View style={styles.overlayContainer}>{renderSection()}</View>
         </Container>
     );
@@ -88,5 +113,9 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
+    },
+    pin: {
+        width: 30,
+        height: 30,
     },
 });
