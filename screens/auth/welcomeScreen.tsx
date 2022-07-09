@@ -1,7 +1,7 @@
-import { ImageBackground, Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import { Container } from "../../common/components";
 import { recycling1, recycling2, recycling3 } from "../../assets/welcomeScreen/";
-import React, { Fragment } from "react";
+import React from "react";
 
 import Swiper from "react-native-swiper";
 import { TScreenProp } from "../../common/types";
