@@ -95,7 +95,7 @@ export const MapScreen = () => {
             <View style={styles.overlayContainer}>
                 <OverlayCard height={386}>
                     <View style={styles.overlayBody}>
-                        <React.Fragment>
+                        <View>
                             <Text style={styles.overlayTitle}>Select Location</Text>
                             <Text style={styles.locationTitle}>Your Location</Text>
                             <Text style={styles.locationText}>{currentLocation.address}</Text>
@@ -125,7 +125,7 @@ export const MapScreen = () => {
                                     );
                                 })}
                             </View>
-                        </React.Fragment>
+                        </View>
 
                         <Button text="Save Address" buttonStyle={{ justifyContent: "flex-end" }} />
                     </View>
@@ -146,8 +146,6 @@ const styles = StyleSheet.create({
         bottom: 0,
     },
     overlayBody: {
-        paddingHorizontal: 20,
-        paddingVertical: 30,
         display: "flex",
         justifyContent: "space-between",
         height: "100%",
