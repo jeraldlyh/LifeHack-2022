@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import React from "react";
-import { ImageBackground, View, Text, StyleSheet, Image, ImageSourcePropType, TouchableOpacity } from "react-native";
+import { ImageBackground, View, Text, StyleSheet, Image, ImageSourcePropType, TouchableOpacity, ScrollView } from "react-native";
 import { Rating } from "react-native-ratings";
 import Icon from "react-native-vector-icons/EvilIcons";
 import { OverlayCard } from "../../common/components";
@@ -26,7 +26,7 @@ export const AboutItem = (navigationRoute: TNavigationProps) => {
     faker.setLocale("en");
 
     return (
-        <View style={{ flex: 1 }}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 200 }}>
             <ImageBackground source={navigationRoute.route.params.image} style={styles.backgroundImage} />
             <View style={styles.overlayContainer}>
                 <OverlayCard height={600}>
@@ -89,13 +89,13 @@ export const AboutItem = (navigationRoute: TNavigationProps) => {
                     </View>
                 </OverlayCard>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     overlayContainer: {
-        position: "absolute",
+        position: "relative",
         top: 350,
         width: "100%",
     },
