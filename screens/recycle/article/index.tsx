@@ -1,6 +1,15 @@
 import { faker } from "@faker-js/faker";
 import React from "react";
-import { ImageBackground, View, Text, StyleSheet, Image, ImageSourcePropType, ScrollView, TouchableOpacity } from "react-native";
+import {
+    ImageBackground,
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    ImageSourcePropType,
+    ScrollView,
+    TouchableOpacity,
+} from "react-native";
 import { Rating } from "react-native-ratings";
 import Icon from "react-native-vector-icons/EvilIcons";
 import { OverlayCard } from "../../../common/components";
@@ -20,12 +29,12 @@ type TRouteParamsProp = {
 
 const Article = (navigationRoute: TNavigationProps) => {
     faker.locale = "en_US";
-    const name = faker.name.firstName() + ' ' + faker.name.lastName();
+    const name = faker.name.firstName() + " " + faker.name.lastName();
     return (
-        <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 100 }} >
+        <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 100 }}>
             <ImageBackground source={navigationRoute.route.params.image} style={styles.backgroundImage} />
             <TouchableOpacity style={styles.cardButton}>
-                <Icon size={20} name="pencil" color="green"/>
+                <Icon size={20} name="pencil" color="green" />
                 <Text style={styles.cardButtonText}>Take quiz</Text>
             </TouchableOpacity>
             <View style={styles.overlayContainer}>
@@ -41,27 +50,19 @@ const Article = (navigationRoute: TNavigationProps) => {
                             <Text style={styles.userList}> {name}</Text>
                         </View>
                         <Text style={styles.subheaderTitle}>1. {faker.lorem.lines(1)} </Text>
-                        <Text style={styles.text}>
-                            {faker.lorem.paragraph()}
-                        </Text>
+                        <Text style={styles.text}>{faker.lorem.paragraph()}</Text>
                         <Text style={styles.subheaderTitle}>2. {faker.lorem.lines(1)} </Text>
-                        <Text style={styles.text}>
-                            {faker.lorem.paragraph()}
-                        </Text>
+                        <Text style={styles.text}>{faker.lorem.paragraph()}</Text>
                         <Text style={styles.subheaderTitle}>3. {faker.lorem.lines(1)} </Text>
-                        <Text style={styles.text}>
-                            {faker.lorem.paragraph()}
-                        </Text>
+                        <Text style={styles.text}>{faker.lorem.paragraph()}</Text>
                         <Text style={styles.subheaderTitle}>4. {faker.lorem.lines(1)} </Text>
-                        <Text style={styles.text}>
-                            {faker.lorem.paragraph()}
-                        </Text>
+                        <Text style={styles.text}>{faker.lorem.paragraph()}</Text>
 
                         <Text style={styles.subheaderTitle}>About the author</Text>
                         <View style={styles.profile}>
                             <Image
                                 style={styles.profilePic}
-                                source={require("../../../assets/marketplace/profilepic.png")}
+                                source={require("../../../assets/marketplace/profile-pic.png")}
                             />
                             <View style={styles.innerProfileContainer}>
                                 <View>
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "100%",
         position: "absolute",
-        opacity: 0.4
+        opacity: 0.4,
     },
     headerContainer: {
         flexDirection: "row",
