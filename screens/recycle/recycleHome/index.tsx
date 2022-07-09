@@ -3,19 +3,14 @@ import { Container } from "../../../common/components";
 // import { TScreenProp } from "../../types";
 import BattleCard from "./components/battleCard";
 import Categories from "./components/categories";
-import SuggestedArticles from "./components/suggestedCourses";
+import SuggestedArticles from "./components/suggestedArticles";
 
-const RecycleHome = () => {
+const RecycleHome = ({navigation}: any) => {
     return (
         <Container scrollable>
             <Categories />
-            <SuggestedArticles />
+            <SuggestedArticles navigation={navigation}/>
         </Container>
-        // <Container scrollable>
-        //     <BattleCard navigation={navigation} />
-        //     <Categories />
-        //     <SuggestedCourses />
-        // </Container>
     );
 };
 

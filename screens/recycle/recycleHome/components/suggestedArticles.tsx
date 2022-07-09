@@ -22,7 +22,7 @@ const CourseCardBody = ({ description }: TCourseCardBodyProps) => {
     );
 };
 
-const SuggestedArticles = () => {
+const SuggestedArticles = ({navigation}: any) => {
     const SUGGESTED_ARTICLES = [
         {
             title: "All you need to know when recycling glass",
@@ -51,16 +51,20 @@ const SuggestedArticles = () => {
             <Text style={styles.suggestedCourseText}>Suggested Articles</Text>
             <ScrollView>
                 {SUGGESTED_ARTICLES.map((article, index) => (
-                    <Card
-                        key={index}
-                        title={article.title}
-                        body={
-                            <CourseCardBody
-                                description={article.description}
-                            />
-                        }
-                        imageSrc={article.imageSrc}
-                    />
+                    <TouchableOpacity
+                        key={index} 
+                        onPress={() => navigation.push("Article")}>
+                        <Card
+                            title={article.title}
+                            body={
+                                <CourseCardBody
+                                    description={article.description}
+                                />
+                            }
+                            imageSrc={article.imageSrc}
+                        />
+                    </TouchableOpacity>
+
                 ))}
             </ScrollView>
         </View>

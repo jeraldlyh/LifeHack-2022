@@ -6,6 +6,7 @@ import RecycleHome from "./recycleHome";
 import IndividualCourse from "./detail/individualCourse";
 import Lesson from "./detail/lesson";
 import CompetitionQuestion from "./competition/components/competitionQuestion";
+import Article from "./article";
 
 const Recycle = createStackNavigator();
 
@@ -21,6 +22,12 @@ const RecycleStack = () => {
                 component={RecycleHome}
                 options={{ title: "Recycling" }}
             />
+            <Recycle.Screen
+                name="Article"
+                component={Article}
+                options={{ title: "Article" }}
+            />
+
             {/* <Recycle.Screen
                 name="CourseDetail"
                 component={IndividualCourse}
