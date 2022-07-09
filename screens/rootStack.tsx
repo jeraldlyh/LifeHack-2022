@@ -11,7 +11,11 @@ export const RootStack = () => {
 
     return (
         <Root.Navigator screenOptions={{ headerShown: false }}>
-            {true ? <Root.Screen name="Tab" component={TabStack} /> : <Root.Screen name="Auth" component={AuthStack} />}
+            {isLoggedIn ? (
+                <Root.Screen name="Tab" component={TabStack} />
+            ) : (
+                <Root.Screen name="Auth" component={AuthStack} />
+            )}
         </Root.Navigator>
     );
 };

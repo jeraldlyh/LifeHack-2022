@@ -7,6 +7,7 @@ import RecycleStack from "./recycle/recycleStack";
 import { MapStack } from "./map";
 import { ProfileStack } from "./profile";
 import { MarketplaceStack } from "./marketplace";
+import { HomeScreen } from "./home";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,10 +46,10 @@ const TabStack = () => {
                 //     }
                 //     return null;
                 // },
-                headerShown: false,
+                headerShown: true,
             })}
         >
-            <Tab.Screen name="HomeStack" component={WelcomeScreen} options={{ title: "Home" }} />
+            <Tab.Screen name="HomeStack" component={HomeScreen} options={{ title: "Home" }} />
             <Tab.Screen name="RecycleStack" component={RecycleStack} options={{ title: "Recycle" }} />
             <Tab.Screen name="MapStack" component={MapStack} options={{ title: "Maps" }} />
             <Tab.Screen name="MarketplaceStack" component={MarketplaceStack} options={{ title: "Marketplace" }} />

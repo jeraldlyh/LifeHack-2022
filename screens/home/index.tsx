@@ -2,13 +2,13 @@ import React from "react";
 import { View, Text, StyleSheet, ImageSourcePropType, TouchableOpacity, Image } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
-import { Container } from "../common/components";
-import { MAIN_THEME } from "../common/constants";
+import { Container } from "../../common/components";
+import { MAIN_THEME } from "../../common/constants";
 
-import { container, paperbox, plasticbottle } from "../assets/marketplace";
-import { ProductCard } from "../common/components/marketplace/productCard";
-import { TScreenProp } from "../common/types";
-import Card from "../common/components/card";
+import { container, paperbox, plasticbottle } from "../../assets/marketplace";
+import { ProductCard } from "../../common/components/marketplace/productCard";
+import { TScreenProp } from "../../common/types";
+import Card from "../../common/components/card";
 import { ScrollView } from "react-native-gesture-handler";
 
 type CalendarProps = {
@@ -55,12 +55,12 @@ const RECYCLING_CENTER = [
     {
         location: "Hougang Ave 2 Bin Centre",
         description: "Accepts plastic bottles, paper and metal waste",
-        imageSrc: require("../assets/recycling-center-1.png"),
+        imageSrc: require("../../assets/recycling-center-1.png"),
     },
     {
         location: "Gee Hoe Seng Pte Ltd",
         description: "Accepts electronic waste, paper",
-        imageSrc: require("../assets/recycling-center-2.jpg"),
+        imageSrc: require("../../assets/recycling-center-2.jpg"),
     },
 ];
 
@@ -75,18 +75,17 @@ const SUGGESTED_ARTICLES = [
         title: "Recycling bins to be given to each household to raise domestic recycling rate",
         description:
             "SINGAPORE - The National Environment Agency (NEA) is stepping up a gear to nudge people to speed up their recycling pace ... ",
-        imageSrc: require("../assets/news-1.png"),
+        imageSrc: require("../../assets/news-1.png"),
     },
     {
         title: "Singapore's recycling rate falls to 10-year low",
         description:
             "For a developed country, Singapore's domestic recycling rate was already low, at 17 per cent. Covid has been blamed for pushing ...",
-        imageSrc: require("../assets/article-2.jpg"),
+        imageSrc: require("../../assets/article-2.jpg"),
     },
 ];
 
-export const Home = ({ navigation }: TScreenProp) => {
-    // change
+export const HomeScreen = ({ navigation }: TScreenProp) => {
     const navigateAboutItems = (title: string, image: ImageSourcePropType, price: string) => {
         navigation.push("AboutItem", { title: title, image: image, price: price });
     };
