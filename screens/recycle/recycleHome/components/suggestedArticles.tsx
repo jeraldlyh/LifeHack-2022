@@ -11,15 +11,17 @@ import Icon from "react-native-vector-icons/EvilIcons";
 
 type TCourseCardBodyProps = {
     description: string;
+    navigation: any;
 };
 
-const CourseCardBody = ({ description }: TCourseCardBodyProps) => {
+const CourseCardBody = ({ description, navigation }: TCourseCardBodyProps) => {
     return (
         <Fragment>
             <Text style={styles.cardDescription}>
                 {description}
             </Text>
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity style={styles.cardButton} 
+            onPress={() => navigation.push("Quiz")}>
                 <Icon size={20} name="pencil" color="green" />
                 <Text style={styles.cardButtonText}>Take quiz</Text>
             </TouchableOpacity>
@@ -64,6 +66,7 @@ const SuggestedArticles = ({ navigation }: any) => {
                             body={
                                 <CourseCardBody
                                     description={article.description}
+                                    navigation={navigation}
                                 />
                             }
                             imageSrc={article.imageSrc}

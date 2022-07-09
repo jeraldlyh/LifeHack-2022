@@ -1,15 +1,15 @@
 import React, { Fragment, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { Container } from "../../common/components";
-import { Button } from "../../common/components/button";
-import { MAIN_THEME } from "../../common/constants";
+import { Container } from "../../../common/components";
+import { Button } from "../../../common/components/button";
+import { MAIN_THEME } from "../../../common/constants";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { BlurView } from "expo-blur";
 import ConfettiCannon from "react-native-confetti-cannon";
 
 type TQuizProps = {};
 
-export const QuizPage = () => {
+export const QuizPage = ({ navigation }: any) => {
     const QuizQuestionBank = [{ question: "Breaking a piece of glass can make recycling easier", correctAnswer: 1 }];
     const [displayWin, setDisplayWin] = useState(false);
     const [displayLoss, setDisplayLoss] = useState(false);

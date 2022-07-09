@@ -16,6 +16,7 @@ import { OverlayCard } from "../../../common/components";
 
 type TNavigationProps = {
     route: TRouteProp;
+    navigation: any;
 };
 
 type TRouteProp = {
@@ -33,7 +34,7 @@ const Article = (navigationRoute: TNavigationProps) => {
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 100 }}>
             <ImageBackground source={navigationRoute.route.params.image} style={styles.backgroundImage} />
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity style={styles.cardButton} onPress={() => navigationRoute.navigation.push("Quiz")}>
                 <Icon size={20} name="pencil" color="green" />
                 <Text style={styles.cardButtonText}>Take quiz</Text>
             </TouchableOpacity>
