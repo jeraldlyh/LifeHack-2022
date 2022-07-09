@@ -33,7 +33,6 @@ export const MarketplaceHome = ({ navigation }: TScreenProp) => {
     };
     return (
         <Container style={styles.container} scrollable={true}>
-            <Header title="Marketplace" isRoot={true} />
             <SearchBar searchContainerStyle={{ marginTop: 20 }} />
             <View style={styles.headerContainer}>
                 <Text style={styles.headerText}>Latest Products</Text>
@@ -73,7 +72,6 @@ export const MarketplaceHome = ({ navigation }: TScreenProp) => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 60,
         alignItems: "center",
         paddingBottom: 100,
     },
@@ -91,7 +89,7 @@ const styles = StyleSheet.create({
     headerText: {
         fontFamily: "DMSans-Bold",
         fontSize: 20,
-        marginTop: 18
+        marginTop: 18,
     },
     seeAll: {
         fontFamily: "DMSans-Regular",
