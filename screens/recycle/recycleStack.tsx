@@ -14,7 +14,7 @@ const RecycleStack = () => {
     return (
         <Recycle.Navigator
             screenOptions={{
-                headerShown: true,
+                headerShown: false,
             }}
         >
             <Recycle.Screen

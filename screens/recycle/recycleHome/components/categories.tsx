@@ -32,8 +32,8 @@ const Categories = () => {
                         <Image
                             source={data.imageSrc}
                             style={{
-                                height: 60,
-                                width: 100,
+                                height: 80,
+                                width: "100%",
                                 borderRadius: 10,
                             }}
                         />
@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        paddingBottom: 10,
-        minHeight: 105,
-        minWidth: 100,
+        paddingBottom: 15,
+        minHeight: 115,
+        minWidth: 120,
         backgroundColor: "#F7F7F7",
         borderRadius: 16,
         shadowOffset: { width: 0, height: 2 },
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         marginRight: 25,
     },
     categoryCardText: {
-        marginTop: 10,
+        marginTop: 15,
         fontFamily: "DMSans-Bold",
     },
 });

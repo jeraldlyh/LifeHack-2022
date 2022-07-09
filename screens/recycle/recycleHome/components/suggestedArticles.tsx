@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
 } from "react-native";
 import Card from "../../../../common/components/card";
+import Icon from "react-native-vector-icons/EvilIcons";
 
 type TCourseCardBodyProps = {
     description: string;
@@ -19,13 +20,14 @@ const CourseCardBody = ({ description }: TCourseCardBodyProps) => {
                 {description}
             </Text>
             <TouchableOpacity style={styles.cardButton}>
+                <Icon size={20} name="pencil" color="green" />
                 <Text style={styles.cardButtonText}>Take quiz</Text>
             </TouchableOpacity>
         </Fragment>
     );
 };
 
-const SuggestedArticles = ({navigation}: any) => {
+const SuggestedArticles = ({ navigation }: any) => {
     const SUGGESTED_ARTICLES = [
         {
             title: "All you need to know when recycling glass",
@@ -55,8 +57,8 @@ const SuggestedArticles = ({navigation}: any) => {
             <ScrollView>
                 {SUGGESTED_ARTICLES.map((article, index) => (
                     <TouchableOpacity
-                        key={index} 
-                        onPress={() => navigation.push("Article")}>
+                        key={index}
+                        onPress={() => navigation.push("Article", { title: article.title, image: article.imageSrc })}>
                         <Card
                             title={article.title}
                             body={
@@ -103,6 +105,7 @@ const styles = StyleSheet.create({
         marginVertical: 5,
     },
     cardButton: {
+        flexDirection: "row",
         marginTop: 10,
         padding: 8,
         backgroundColor: "#F0F0F0",
