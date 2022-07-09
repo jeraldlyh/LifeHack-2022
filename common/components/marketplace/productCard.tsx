@@ -8,7 +8,7 @@ type TProductProps = {
     title: string;
     price: string;
     itemsInARow: number;
-    onPressHandler: ()=>void;
+    onPressHandler?: ()=>void;
 };
 export const ProductCard = ({ image, title, price, itemsInARow, onPressHandler }: TProductProps) => {
     return itemsInARow == 2 ? (
