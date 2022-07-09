@@ -1,0 +1,7 @@
+export const cloth = require("./cloth.jpg")
+export const container = require("./container.jpg")
+export const paperbox = require("./paperbox.jpg")
+export const plasticbottle = require("./plasticbottle.jpg")
+export const glassbottle = require("./glassbottle.jpg")
+export const cardboard = require("./cardboard.jpg")
+export const plasticcup = require("./plasticcup.jpg")

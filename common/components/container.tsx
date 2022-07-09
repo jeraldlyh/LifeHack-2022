@@ -8,7 +8,7 @@ type TContainerProps = {
 
 export const Container = ({ children, scrollable,style }: TContainerProps) => {
     if (scrollable) {
-        return <ScrollView style={[styles.container,style]}>{children}</ScrollView>;
+        return <ScrollView contentContainerStyle={[styles.scrollViewContainer,style]}>{children}</ScrollView>;
     }
 
     return <View style={[style,styles.container]}>{children}</View>;
@@ -20,4 +20,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 26,
         backgroundColor: "white",
     },
+    scrollViewContainer:{
+        paddingHorizontal: 26,
+        backgroundColor: "white",
+    }
 });

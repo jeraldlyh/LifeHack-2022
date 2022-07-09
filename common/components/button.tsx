@@ -1,23 +1,22 @@
 import React from "react"
-import { StyleProp, ViewStyle, View, Text, StyleSheet } from "react-native"
 import { MAIN_THEME } from "../constants"
+import { StyleProp, ViewStyle, View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 type TSButtonProps = {
-    buttonStyle?: StyleProp<ViewStyle>
-    textStyle?: StyleProp<ViewStyle>
-    text: string
-}
+    buttonStyle?: StyleProp<ViewStyle>;
+    textStyle?: StyleProp<ViewStyle>;
+    text: string;
+    handleOnPress?: () => void;
+};
 
-export const Button = ({ buttonStyle, text, textStyle }: TSButtonProps) => {
+export const Button = ({ buttonStyle, text, textStyle, handleOnPress }: TSButtonProps) => {
     return (
-        <View style={[styles.buttonContainer, buttonStyle]}>
-            <Text style={[styles.buttonText, textStyle]}>
-                {text}
-            </Text>
-        </View>
-
-    )
-}
+        <TouchableOpacity onPress={handleOnPress} style={[styles.buttonContainer, buttonStyle]}>
+            <Text style={[styles.buttonText, textStyle]}>{text}</Text>
+        </TouchableOpacity>
+    );
+};
 
 const styles = StyleSheet.create({
     buttonContainer: {
@@ -32,5 +31,5 @@ const styles = StyleSheet.create({
         color: "white",
         fontFamily: "DMSans-Bold",
         fontSize: 17,
-    }
-})
+    },
+});

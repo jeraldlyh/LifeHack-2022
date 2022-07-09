@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getHeaderTitle } from "@react-navigation/elements";
 import Icon from "react-native-vector-icons/Ionicons";
 import { WelcomeScreen } from "./auth/welcomeScreen";
+import { MapStack } from "./map";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,8 +19,8 @@ const TabStack = () => {
 
                     if (route.name === "Home") {
                         iconName = focused ? "home" : "home-outline";
-                    } else if (route.name === "Courses") {
-                        iconName = focused ? "clipboard" : "clipboard-outline";
+                    } else if (route.name === "Maps") {
+                        iconName = focused ? "map" : "map-outline";
                     } else if (route.name === "Notif") {
                         iconName = focused ? "notifications" : "notifications-outline";
                     } else if (route.name === "Hazard") {
@@ -46,7 +47,8 @@ const TabStack = () => {
                 headerShown: false,
             })}
         >
-            <Tab.Screen name="welcome" component={WelcomeScreen} />
+            <Tab.Screen name="Home" component={WelcomeScreen} />
+            <Tab.Screen name="Maps" component={MapStack} />
         </Tab.Navigator>
     );
 };
