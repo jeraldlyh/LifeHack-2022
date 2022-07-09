@@ -4,9 +4,15 @@ export type TCurrentLocation = LocationObjectCoords & {
     address: string;
 };
 
+export type TSection = {
+    key: number;
+    metadata?: any;
+};
+
 export type TSectionProps = {
     currentLocation: TCurrentLocation;
-    setSection: (value: number) => void;
+    section: TSection;
+    setSection: (value: TSection) => void;
 };
 
 export type TNearestBin = {
@@ -15,9 +21,11 @@ export type TNearestBin = {
     distance: number;
     address: string;
     location: string | null;
+    notes?: string;
 };
 
 export type TCoordinates = {
     longitude: string;
     latitude: string;
+    notes?: string;
 };

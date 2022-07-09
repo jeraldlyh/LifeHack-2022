@@ -1,16 +1,18 @@
 import { Icon } from "@rneui/themed";
 import { StyleSheet, View, Text } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { MAIN_THEME } from "../../../common/constants";
 
 type TNearestBinCard = {
     location: string | null;
     address: string;
     distance: number;
+    handleOnPress: () => void;
 };
 
-export const NearestBinCard = ({ location, address, distance }: TNearestBinCard) => {
+export const NearestBinCard = ({ location, address, distance, handleOnPress }: TNearestBinCard) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={handleOnPress}>
             <View style={styles.iconTextWrapperContainer}>
                 <View style={styles.iconContainer}>
                     <Icon name="map-pin" type="feather" color={MAIN_THEME.COLOR.GREEN} />
@@ -21,9 +23,9 @@ export const NearestBinCard = ({ location, address, distance }: TNearestBinCard)
                 </View>
             </View>
             <View style={styles.distanceContainer}>
-                <Text style={styles.distanceText}>{distance}</Text>
+                <Text style={styles.distanceText}>{distance}m</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 
@@ -38,6 +40,7 @@ const styles = StyleSheet.create({
         paddingVertical: 25,
         marginBottom: 7,
         justifyContent: "space-between",
+        borderRadius: 10,
     },
     iconContainer: {
         display: "flex",
@@ -52,6 +55,7 @@ const styles = StyleSheet.create({
     textContainer: {
         display: "flex",
         marginLeft: 10,
+        justifyContent: "space-between",
     },
     addressText: {
         color: "lightgray",

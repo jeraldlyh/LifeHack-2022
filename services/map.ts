@@ -11,6 +11,7 @@ import { sampleSize } from "lodash";
 
 const saveNearestBins = async (userId: string, nearestBins: TNearestBinsDto) => {
     const db = getFirestore(firebaseApp);
+    console.log(nearestBins);
 
     await setDoc(doc(db, "map", userId), nearestBins);
 };
@@ -86,6 +87,7 @@ const getLatestBins = async (
                 ),
                 address: AddressHelper.formatAddress(addresses[0]),
                 location: addresses[0].name,
+                notes: coordinate.notes || "",
             };
         }),
     );

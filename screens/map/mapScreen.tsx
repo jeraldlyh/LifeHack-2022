@@ -5,11 +5,12 @@ import React, { useEffect, useState } from "react";
 import { Container } from "../../common/components";
 import { LocationGeocodedAddress, LocationObjectCoords } from "expo-location";
 import { MainSection, NearestBinSection } from "./components";
-import { TCurrentLocation } from "./components/types";
+import { TCurrentLocation, TSection } from "./components/types";
 import { AddressHelper } from "../../utils";
+import { BinInfoSection } from "./components/binInfoSection";
 
 export const MapScreen = () => {
-    const [section, setSection] = useState<number>(0);
+    const [section, setSection] = useState<TSection>({ key: 0 });
     const [currentLocation, setCurrentLocation] = useState<TCurrentLocation>();
 
     useEffect(() => {
@@ -34,11 +35,21 @@ export const MapScreen = () => {
 
     const renderSection = () => {
         if (currentLocation) {
-            switch (section) {
+            switch (section?.key) {
                 case 0:
-                    return <MainSection currentLocation={currentLocation} setSection={setSection} />;
+                    return <MainSection currentLocation={currentLocation} section={section} setSection={setSection} />;
                 case 1:
-                    return <NearestBinSection currentLocation={currentLocation} setSection={setSection} />;
+                    return (
+                        <NearestBinSection
+                            currentLocation={currentLocation}
+                            section={section}
+                            setSection={setSection}
+                        />
+                    );
+                case 2:
+                    return (
+                        <BinInfoSection currentLocation={currentLocation} section={section} setSection={setSection} />
+                    );
             }
         }
     };
