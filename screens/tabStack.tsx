@@ -5,12 +5,12 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { WelcomeScreen } from "./auth/welcomeScreen";
 import RecycleStack from "./recycle/recycleStack";
 import { MapStack } from "./map";
+import { ProfileStack } from "./profile";
+import { MarketplaceStack } from "./marketplace";
 
 const Tab = createBottomTabNavigator();
 
 const TabStack = () => {
-    const WHITELIST_ROUTES = ["Home"];
-
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -18,17 +18,15 @@ const TabStack = () => {
                 tabBarIcon: ({ focused, size }) => {
                     let iconName;
 
-                    if (route.name === "Home") {
+                    if (route.name === "HomeStack") {
                         iconName = focused ? "home" : "home-outline";
-                    } else if (route.name === "Maps") {
+                    } else if (route.name === "MapStack") {
                         iconName = focused ? "map" : "map-outline";
-                    } else if (route.name === "Notif") {
-                        iconName = focused ? "notifications" : "notifications-outline";
-                    } else if (route.name === "Hazard") {
-                        iconName = focused ? "skull" : "skull-outline";
-                    } else if (route.name === "Recycle") {
+                    } else if (route.name === "RecycleStack") {
                         iconName = focused ? "sync-circle" : "sync-circle-outline";
-                    }else {
+                    } else if (route.name === "MarketplaceStack") {
+                        iconName = focused ? "wallet" : "wallet-outline";
+                    } else {
                         iconName = focused ? "person" : "person-outline";
                     }
 
@@ -50,9 +48,11 @@ const TabStack = () => {
                 headerShown: false,
             })}
         >
-            <Tab.Screen name="Home" component={WelcomeScreen} />
-            <Tab.Screen name="Recycle" component={RecycleStack} />
-            <Tab.Screen name="Maps" component={MapStack} />
+            <Tab.Screen name="HomeStack" component={WelcomeScreen} options={{ title: "Home" }} />
+            <Tab.Screen name="RecycleStack" component={RecycleStack} options={{ title: "Recycle" }} />
+            <Tab.Screen name="MapStack" component={MapStack} options={{ title: "Maps" }} />
+            <Tab.Screen name="MarketplaceStack" component={MarketplaceStack} options={{ title: "Marketplace" }} />
+            <Tab.Screen name="ProfileStack" component={ProfileStack} options={{ title: "Profile" }} />
         </Tab.Navigator>
     );
 };

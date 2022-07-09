@@ -1,8 +1,4 @@
-import { Background } from "@react-navigation/elements";
-import React from "react";
-import { StyleSheet, Text, View, Image, ImageSourcePropType } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/EvilIcons";
+import { StyleSheet, Text, View, ImageSourcePropType } from "react-native";
 import { Container } from "../../common/components";
 import { SearchBar } from "../../common/components/searchBar";
 import {
@@ -16,6 +12,7 @@ import {
 } from "../../assets/marketplace";
 import { ProductCard } from "../../common/components/marketplace/productCard";
 import { TScreenProp } from "../../common/types";
+import { Header } from "../../common/components/headers";
 
 export const MarketplaceHome = ({ navigation }: TScreenProp) => {
     const productDetails = [
@@ -31,12 +28,12 @@ export const MarketplaceHome = ({ navigation }: TScreenProp) => {
         { itemTitle: "Paper Box", price: "$1.00", image: paperbox },
     ];
 
-    const navigateAboutItems = ( title:string, image:ImageSourcePropType, price:string) => {
+    const navigateAboutItems = (title: string, image: ImageSourcePropType, price: string) => {
         navigation.push("AboutItem", { title: title, image: image, price: price });
     };
     return (
         <Container style={styles.container} scrollable={true}>
-            <Text style={styles.title}>Marketplace</Text>
+            <Header title="Marketplace" isRoot={true} />
             <SearchBar searchContainerStyle={{ marginTop: 20 }} />
             <View style={styles.headerContainer}>
                 <Text style={styles.headerText}>Latest Products</Text>
@@ -50,7 +47,7 @@ export const MarketplaceHome = ({ navigation }: TScreenProp) => {
                         price={data.price}
                         image={data.image}
                         itemsInARow={2}
-                        onPressHandler= {()=>navigateAboutItems(data.itemTitle,data.image,data.price)}
+                        onPressHandler={() => navigateAboutItems(data.itemTitle, data.image, data.price)}
                     />
                 ))}
             </View>
@@ -66,7 +63,7 @@ export const MarketplaceHome = ({ navigation }: TScreenProp) => {
                         price={data.price}
                         image={data.image}
                         itemsInARow={3}
-                        onPressHandler={()=>navigateAboutItems(data.itemTitle,data.image,data.price)}
+                        onPressHandler={() => navigateAboutItems(data.itemTitle, data.image, data.price)}
                     />
                 ))}
             </View>

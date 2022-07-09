@@ -2,38 +2,16 @@ import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { StyleSheet, Text, View } from "react-native";
 import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
-import { Container, OverlayCard } from "../../common/components";
+import { Container } from "../../common/components";
 import { LocationGeocodedAddress, LocationObjectCoords } from "expo-location";
-import { Label } from "./components/label";
-import { Icon } from "@rneui/themed";
-import { MAIN_THEME } from "../../common/constants";
-import { Button } from "../../common/components/button";
-
-type TCurrentLocation = LocationObjectCoords & {
-    address: string;
-};
+import { MainSection, NearestBinSection } from "./components";
+import { TCurrentLocation, TSection } from "./components/types";
+import { AddressHelper } from "../../utils";
+import { BinInfoSection } from "./components/binInfoSection";
 
 export const MapScreen = () => {
-    const recycleBins = [];
-    const BUTTON_OPTIONS = [
-        {
-            key: "Home",
-            type: "antdesign",
-            icon: "home",
-        },
-        {
-            key: "Office",
-            type: "entypo",
-            icon: "suitcase",
-        },
-        {
-            key: "Others",
-            type: "feather",
-            icon: "map-pin",
-        },
-    ];
+    const [section, setSection] = useState<TSection>({ key: 0 });
     const [currentLocation, setCurrentLocation] = useState<TCurrentLocation>();
-    const [selectedOption, setSelectedOption] = useState<string>();
 
     useEffect(() => {
         getCurrentLocation();
@@ -50,26 +28,30 @@ export const MapScreen = () => {
                     longitude: coords.longitude,
                     latitude: coords.latitude,
                 });
-                setCurrentLocation({ ...coords, address: formatAddress(addresses[0]) });
+                setCurrentLocation({ ...coords, address: AddressHelper.formatAddress(addresses[0]) });
             }
         }
     };
 
-    const formatAddress = (address: LocationGeocodedAddress) => {
-        let output = `${address.district} ${address.street}`;
-
-        if (address.streetNumber) {
-            output += ` St.${address.streetNumber}`;
+    const renderSection = () => {
+        if (currentLocation) {
+            switch (section?.key) {
+                case 0:
+                    return <MainSection currentLocation={currentLocation} section={section} setSection={setSection} />;
+                case 1:
+                    return (
+                        <NearestBinSection
+                            currentLocation={currentLocation}
+                            section={section}
+                            setSection={setSection}
+                        />
+                    );
+                case 2:
+                    return (
+                        <BinInfoSection currentLocation={currentLocation} section={section} setSection={setSection} />
+                    );
+            }
         }
-
-        if (address.postalCode) {
-            output += ` ${address.postalCode}`;
-        }
-        return output;
-    };
-
-    const handleOnPress = (key: string) => {
-        setSelectedOption(key);
     };
 
     if (!currentLocation) {
@@ -92,45 +74,7 @@ export const MapScreen = () => {
                     longitudeDelta: 0.0421,
                 }}
             ></MapView>
-            <View style={styles.overlayContainer}>
-                <OverlayCard height={386}>
-                    <View style={styles.overlayBody}>
-                        <React.Fragment>
-                            <Text style={styles.overlayTitle}>Select Location</Text>
-                            <Text style={styles.locationTitle}>Your Location</Text>
-                            <Text style={styles.locationText}>{currentLocation.address}</Text>
-
-                            <View style={styles.divider} />
-
-                            <Text style={styles.locationTitle}>Save As</Text>
-                            <View style={styles.buttonContainer}>
-                                {BUTTON_OPTIONS.map((option, index) => {
-                                    const isSelected = option.key === selectedOption;
-
-                                    return (
-                                        <Label
-                                            key={index}
-                                            icon={
-                                                <Icon
-                                                    name={option.icon}
-                                                    type={option.type}
-                                                    size={12}
-                                                    color={isSelected ? "white" : MAIN_THEME.COLOR.GREEN}
-                                                />
-                                            }
-                                            text={option.key}
-                                            handleOnPress={() => handleOnPress(option.key)}
-                                            isSelected={isSelected}
-                                        />
-                                    );
-                                })}
-                            </View>
-                        </React.Fragment>
-
-                        <Button text="Save Address" buttonStyle={{ justifyContent: "flex-end" }} />
-                    </View>
-                </OverlayCard>
-            </View>
+            <View style={styles.overlayContainer}>{renderSection()}</View>
         </Container>
     );
 };
@@ -144,37 +88,5 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-    },
-    overlayBody: {
-        paddingHorizontal: 20,
-        paddingVertical: 30,
-        display: "flex",
-        justifyContent: "space-between",
-        height: "100%",
-    },
-    overlayTitle: {
-        fontFamily: "DMSans-Bold",
-        fontSize: 23,
-    },
-    locationTitle: {
-        fontFamily: "DMSans-Regular",
-        color: "gray",
-        marginTop: 20,
-    },
-    locationText: {
-        fontFamily: "DMSans-Regular",
-        marginTop: 8,
-    },
-    divider: {
-        width: "100%",
-        height: 1,
-        backgroundColor: "lightgray",
-        marginTop: 5,
-    },
-    buttonContainer: {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        marginTop: 8,
     },
 });

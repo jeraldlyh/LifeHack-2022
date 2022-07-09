@@ -18,10 +18,10 @@ export const WelcomeScreen = ({ navigation }: TScreenProp) => {
         <Container>
             <Swiper autoplay showsPagination style={styles.swiperStyle}>
                 {IMAGE_DATA.map((data, index) => (
-                    <View>
-                        <Image key={index} source={data.image} style={styles.imageContainer} />
+                    <React.Fragment key={index} >
+                        <Image source={data.image} style={styles.imageContainer} />
                         <Text style={styles.swiperText}>{data.text}</Text>
-                    </View>
+                    </React.Fragment>
                 ))}
             </Swiper>
             <Button text="Get Started" buttonStyle={styles.buttonContainer} />
