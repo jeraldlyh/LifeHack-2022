@@ -1,11 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageSourcePropType, TouchableOpacity, Image } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-
 import { Container } from "../../common/components";
-import { MAIN_THEME } from "../../common/constants";
-
-import { container, paperbox, plasticbottle } from "../../assets/marketplace";
+import { FEATURED_PRODUCTS, MAIN_THEME, RECYCLING_CENTER, SUGGESTED_ARTICLES } from "../../common/constants";
 import { ProductCard } from "../../common/components/marketplace/productCard";
 import { TScreenProp } from "../../common/types";
 import Card from "../../common/components/card";
@@ -51,45 +48,7 @@ const RecyclingCenter = (props: RecyclingCenterProps) => {
     );
 };
 
-const RECYCLING_CENTER = [
-    {
-        location: "Hougang Ave 2 Bin Centre",
-        description: "Accepts plastic bottles, paper and metal waste",
-        imageSrc: require("../../assets/recycling-center-1.png"),
-    },
-    {
-        location: "Gee Hoe Seng Pte Ltd",
-        description: "Accepts electronic waste, paper",
-        imageSrc: require("../../assets/recycling-center-2.jpg"),
-    },
-];
-
-const FEATURED_PRODUCTS = [
-    { itemTitle: "Plastic Bottle", price: "$1.00", image: plasticbottle },
-    { itemTitle: "Container", price: "$2.00", image: container },
-    { itemTitle: "Paper Box", price: "$1.00", image: paperbox },
-];
-
-const SUGGESTED_ARTICLES = [
-    {
-        title: "Recycling bins to be given to each household to raise domestic recycling rate",
-        description:
-            "SINGAPORE - The National Environment Agency (NEA) is stepping up a gear to nudge people to speed up their recycling pace ... ",
-        imageSrc: require("../../assets/news-1.png"),
-    },
-    {
-        title: "Singapore's recycling rate falls to 10-year low",
-        description:
-            "For a developed country, Singapore's domestic recycling rate was already low, at 17 per cent. Covid has been blamed for pushing ...",
-        imageSrc: require("../../assets/article-2.jpg"),
-    },
-];
-
 export const HomeScreen = ({ navigation }: TScreenProp) => {
-    const navigateAboutItems = (title: string, image: ImageSourcePropType, price: string) => {
-        navigation.push("AboutItem", { title: title, image: image, price: price });
-    };
-
     return (
         <Container>
             <ScrollView>
@@ -115,7 +74,7 @@ export const HomeScreen = ({ navigation }: TScreenProp) => {
                 {/* recycling centers */}
                 <View style={styles.titleContainer}>
                     <Text style={styles.sectionTitle}>Recycling centers</Text>
-                    <TouchableOpacity style={styles.cardButton}>
+                    <TouchableOpacity style={styles.cardButton} onPress={() => {}}>
                         <Text style={styles.cardButtonText}>Search location</Text>
                     </TouchableOpacity>
                 </View>
@@ -139,7 +98,7 @@ export const HomeScreen = ({ navigation }: TScreenProp) => {
                 {/* items you may like */}
                 <View style={styles.titleContainer}>
                     <Text style={styles.sectionTitle}>Items you may like</Text>
-                    <TouchableOpacity style={styles.cardButton}>
+                    <TouchableOpacity style={styles.cardButton} onPress={() => {}}>
                         <Text style={styles.cardButtonText}>Visit marketplace</Text>
                     </TouchableOpacity>
                 </View>
@@ -151,7 +110,6 @@ export const HomeScreen = ({ navigation }: TScreenProp) => {
                             price={data.price}
                             image={data.image}
                             itemsInARow={3}
-                            onPressHandler={() => navigateAboutItems(data.itemTitle, data.image, data.price)}
                         />
                     ))}
                 </View>
@@ -159,7 +117,7 @@ export const HomeScreen = ({ navigation }: TScreenProp) => {
                 <Text style={styles.sectionTitle}>Recycling news</Text>
                 <View style={{ marginBottom: 20 }}>
                     {SUGGESTED_ARTICLES.map((article, index) => (
-                        <TouchableOpacity key={index} onPress={() => navigation.push("Article")}>
+                        <TouchableOpacity key={index} onPress={() => {}}>
                             <Card
                                 title={article.title}
                                 body={<CourseCardBody description={article.description} />}
