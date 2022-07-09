@@ -56,7 +56,7 @@ const SuggestedArticles = ({navigation}: any) => {
                 {SUGGESTED_ARTICLES.map((article, index) => (
                     <TouchableOpacity
                         key={index} 
-                        onPress={() => navigation.push("Article")}>
+                        onPress={() => navigation.push("Article", {title:article.title, image:article.imageSrc})}>
                         <Card
                             title={article.title}
                             body={
