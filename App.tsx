@@ -5,9 +5,9 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { ModalProvider, AuthProvider } from "./providers";
 import { RootStack } from "./screens";
-import { MarketplaceHome } from "./screens/marketplace/marketHome";
-import { AboutItem } from "./screens/marketplace/aboutItem";
-import { MarketplaceStack } from "./screens/marketplace";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs(["Warning: ..."]);
 
 export default function App() {
     const [isLoaded, setIsLoaded] = useState(false);
