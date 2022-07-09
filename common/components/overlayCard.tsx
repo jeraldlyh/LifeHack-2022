@@ -16,9 +16,9 @@ export const OverlayCard = ({ children, height, isAbsolute }: TOverlayCardProps)
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "white",
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
-        paddingHorizontal: 20,
-        paddingVertical: 30,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        paddingHorizontal:20,
+        paddingVertical:30
     },
 });
