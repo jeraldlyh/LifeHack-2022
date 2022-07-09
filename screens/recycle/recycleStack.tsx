@@ -1,8 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { getHeaderTitle } from "@react-navigation/elements";
 import RecycleHome from "./recycleHome";
-import IndividualCourse from "./detail/individualCourse";
-import Lesson from "./detail/lesson";
 import Article from "./article";
 import { QuizPage } from "./quiz/quiz";
 

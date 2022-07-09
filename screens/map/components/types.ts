@@ -13,6 +13,7 @@ export type TSectionProps = {
     currentLocation: TCurrentLocation;
     section: TSection;
     setSection: (value: TSection) => void;
+    navigation?: any;
 };
 
 export type TNearestBin = {

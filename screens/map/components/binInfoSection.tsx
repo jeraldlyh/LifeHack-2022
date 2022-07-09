@@ -1,9 +1,9 @@
 import { View, ScrollView, Image, Text, StyleSheet } from "react-native";
-import { OverlayCard, BackButton } from "../../../common/components";
+import { OverlayCard, BackButton, Button } from "../../../common/components";
 import { MAIN_THEME } from "../../../common/constants";
 import { TSectionProps } from "./types";
 
-export const BinInfoSection = ({ section, setSection }: TSectionProps) => {
+export const BinInfoSection = ({ section, setSection, navigation }: TSectionProps) => {
     return (
         <OverlayCard height={385}>
             <View style={styles.container}>
@@ -17,6 +17,12 @@ export const BinInfoSection = ({ section, setSection }: TSectionProps) => {
                     <Image source={require("../../../assets/maps/recycle_bin.png")} style={styles.imageContainer} />
                     <Text style={styles.locationText}>Details</Text>
                     <Text style={styles.detailsText}>{section.metadata.notes || "No notes can be found"}</Text>
+
+                    <Button
+                        text="Click here to recycle"
+                        buttonStyle={{ marginTop: 15 }}
+                        handleOnPress={() => navigation.push("RecycleForm")}
+                    />
                 </ScrollView>
             </View>
         </OverlayCard>

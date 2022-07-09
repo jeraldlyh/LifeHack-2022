@@ -8,8 +8,9 @@ import { TCurrentLocation, TNearestBin, TSection } from "./components/types";
 import { AddressHelper } from "../../utils";
 import { BinInfoSection } from "./components/binInfoSection";
 import { MapService } from "../../services";
+import { TScreenProp } from "../../common/types";
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }: TScreenProp) => {
     const [section, setSection] = useState<TSection>({ key: 0 });
     const [currentLocation, setCurrentLocation] = useState<TCurrentLocation>();
     const [nearestBins, setNearestBins] = useState<TNearestBin[]>([]);
@@ -61,7 +62,12 @@ export const MapScreen = () => {
                     return <NearestBinSection section={section} setSection={setSection} nearestBins={nearestBins} />;
                 case 2:
                     return (
-                        <BinInfoSection currentLocation={currentLocation} section={section} setSection={setSection} />
+                        <BinInfoSection
+                            currentLocation={currentLocation}
+                            section={section}
+                            setSection={setSection}
+                            navigation={navigation}
+                        />
                     );
             }
         }
