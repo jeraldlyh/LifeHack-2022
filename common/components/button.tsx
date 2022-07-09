@@ -1,5 +1,6 @@
 import React from "react"
 import { StyleProp, ViewStyle, View, Text, StyleSheet } from "react-native"
+import { MAIN_THEME } from "../constants"
 
 type TSButtonProps = {
     buttonStyle?: StyleProp<ViewStyle>
@@ -21,7 +22,7 @@ export const Button = ({ buttonStyle, text, textStyle }: TSButtonProps) => {
 const styles = StyleSheet.create({
     buttonContainer: {
         width: "100%",
-        backgroundColor: "#56884E",
+        backgroundColor: MAIN_THEME.COLOR.GREEN,
         borderRadius: 8,
         padding: 20,
         justifyContent: "center",

@@ -31,7 +31,7 @@ const TabStack = () => {
                     return <Icon name={iconName} />;
                 },
                 tabBarLabelStyle: {
-                    fontFamily: "Poppins-Bold",
+                    fontFamily: "DMSans-Bold",
                 },
                 tabBarActiveTintColor: "#2B2B2B",
                 tabBarInactiveTintColor: "gray",
