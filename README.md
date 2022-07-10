@@ -8,6 +8,13 @@
 
 Code submission for [NUS LifeHack 2022](https://lifehack.nuscomputing.com/)
 
+| Platform             | Description                                                                                            |
+:--------------------- | :----------------------------------------------------------------------------------------------------: |
+| Youtube              | [App Demo](https://youtu.be/n6b5ixmxc1U)                                                              |
+| Figma                | [Wireframes](https://www.figma.com/file/fSVIRBO5hb8efVPJhJwqm0/lifehack-2022?node-id=2%3A1874) |
+| Canva                | [Pitch Deck](https://www.canva.com/design/DAFF54-ognI/fJpgIHH7VpwHqL0f3f5iCQ/edit?utm_content=DAFF54-ognI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) |
+
+
 ## Problem Statement
 **"In 2021, the National Environment Agency lamented that Singapore’s recycling rate had fallen to a 10 year low. What can we do to encourage more people to recycle, or make recycling more convenient and accessible?"**
 > WeCycle is a one-stop app that aims to provide improved convenience, flexibility and information for young adults, creating a more conducive environment where they can recycle easily and reliably.
