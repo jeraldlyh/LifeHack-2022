@@ -16,7 +16,7 @@ export const WelcomeScreen = ({ navigation }: TScreenProp) => {
 
     return (
         <Container>
-            <Swiper autoplay showsPagination style={styles.swiperStyle}>
+            <Swiper autoplay showsPagination={false} style={styles.swiperStyle}>
                 {IMAGE_DATA.map((data, index) => (
                     <React.Fragment key={index}>
                         <Image source={data.image} style={styles.imageContainer} />

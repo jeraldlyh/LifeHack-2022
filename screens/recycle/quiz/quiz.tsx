@@ -10,7 +10,7 @@ import ConfettiCannon from "react-native-confetti-cannon";
 type TQuizProps = {};
 
 export const QuizPage = ({ navigation }: any) => {
-    const QuizQuestionBank = [{ question: "Breaking a piece of glass can make recycling easier", correctAnswer: 1 }];
+    const QuizQuestionBank = [{ question: "Breaking a piece of glass can make recycling easier", correctAnswer: 2 }];
     const [displayWin, setDisplayWin] = useState(false);
     const [displayLoss, setDisplayLoss] = useState(false);
 

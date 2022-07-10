@@ -40,6 +40,8 @@ export const LoginScreen = ({ navigation }: TScreenProp) => {
 const styles = StyleSheet.create({
     container: {
         justifyContent: "center",
+        paddingBottom:80,
+        
     },
     title: {
         fontFamily: "DMSans-Bold",
