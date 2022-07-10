@@ -56,12 +56,11 @@ Refer to official [Firestore documentation](https://firebase.google.com/docs/fir
 
 ### Environment Variables
 #### Backend
-Private key can be generated on Firebase console via `Project settings > Service accounts > Generate private key`
-| Name                    | Description           |
-| ----------------------- | --------------------- |
-| `FIREBASE_PROJECT_ID`   | Firebase project ID   |
-| `FIREBASE_PRIVATE_KEY`  | Firebase private key  |
-| `FIREBASE_CLIENT_EMAIL` | Firebase client email |
+Refer to official [Firestore documentation](https://firebase.google.com/docs/firestore/quickstart)
+
+![image](https://user-images.githubusercontent.com/37609749/122356081-0b2c8880-cf85-11eb-97bd-5dac71a1b36f.png)
+- Navigate to `.env.local` and copy the above config into the file
+- Subsequently, rename `.env.local` to `.env`
 
 
 ### Cloning of Repo
