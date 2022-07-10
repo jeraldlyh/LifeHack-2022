@@ -54,10 +54,6 @@ Download Expo App:
 ### Firestore
 Refer to official [Firestore documentation](https://firebase.google.com/docs/firestore/quickstart)
 
-### Environment Variables
-#### Backend
-Refer to official [Firestore documentation](https://firebase.google.com/docs/firestore/quickstart)
-
 ![image](https://user-images.githubusercontent.com/37609749/122356081-0b2c8880-cf85-11eb-97bd-5dac71a1b36f.png)
 - Navigate to `.env.local` and copy the above config into the file
 - Subsequently, rename `.env.local` to `.env`
@@ -67,9 +63,9 @@ Refer to official [Firestore documentation](https://firebase.google.com/docs/fir
 #### Mobile App
 ```console
 root:~$ git clone https://github.com/jeraldlyh/LifeHack-2022.git
-root:~$ cd LifeHack-2022/app
-root:CodeEXP-2022$ yarn
-root:CodeEXP-2022$ expo start
+root:~$ cd LifeHack-2022
+root:LifeHack-2022$ yarn
+root:LifeHack-2022$ expo start
 ```
 - Scan the QR code provided by Expo CLI using your Expo Go App on your phone
 
